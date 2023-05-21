@@ -1,22 +1,26 @@
-package dbprogramming3;
+package dbprogramming1;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//เพิ่มข้อมูล (insert)
-public class LAB9 {
+// แก้ไขข้อมูลโดยใช้ PreparedStatement
+public class LAB13 {
     public static void main(String[] args) {
         String URL = "jdbc:mysql://localhost:3306/mydb3";
         String username = "root";
-        String password = "inrita090";
+        String password = "veerapat076";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(URL, username, password);
-            Statement sta = con.createStatement();
-            String sql = "insert into student(studentID, firstname, lastname, email, deptID)"
-                + "values('111111', 'Inrita', 'Wara', 'inrita.wara@gmail.com', 'IT')";
-            sta.executeUpdate(sql);
+            String sql = "update student set email = ? where studentID = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, "eiei@gmail.com");
+            preparedStatement.setString(2, "111111");
+            preparedStatement.executeUpdate();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Dbprogramming3.class.getName()).log(Level.SEVERE, null, ex);

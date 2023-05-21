@@ -1,4 +1,4 @@
-package dbprogramming3;
+package dbprogramming1;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -9,7 +9,7 @@ public class LAB15 {
     public static void main(String[] args) {
         String URL = "jdbc:mysql://localhost:3306/mydb3";
         String username = "root";
-        String password = "inrita090";
+        String password = "veerapat076";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(URL, username, password);
